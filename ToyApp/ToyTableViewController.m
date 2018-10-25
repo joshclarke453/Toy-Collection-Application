@@ -9,6 +9,7 @@
 #import "ToyTableViewController.h"
 #import "AddToyViewController.h"
 #import "ToyDetailedViewController.h"
+#import "Toy.h"
 
 @interface ToyTableViewController ()
 
@@ -20,8 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    cellData = @[@"hello", @"world", @"I hope", @"this works"];
+    cellData = [[NSMutableArray alloc] init];
+    Toy* t1 = [[Toy alloc] initWithDetails:@"NES" :@"Nintendo" : @"259.99" :@"Childhood Dreams"];
+    [cellData addObject:t1];
     self.navigationItem.title = @"List Of Toys";
+    if (self.addedToy != nil) {
+        [cellData addObject:self.addedToy];
+        self.addedToy = nil;
+    }
+    [self.tableView reloadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -47,8 +55,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"toyCell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = cellData[indexPath.row];
+    Toy *toyName = cellData[indexPath.row];
+    cell.textLabel.text = [toyName getName];
     
     return cell;
 }
@@ -101,8 +109,8 @@
         if ([segue.destinationViewController isKindOfClass:[ToyDetailedViewController class]]) {
             ToyDetailedViewController *targetViewController = segue.destinationViewController;
             NSIndexPath *path = sender;
-            NSString *toyName = self.cellData[path.row];
-            targetViewController.selectedToy = toyName;
+            Toy *toy = self.cellData[path.row];
+            targetViewController.selectedToy = toy;
         }
     }
 }

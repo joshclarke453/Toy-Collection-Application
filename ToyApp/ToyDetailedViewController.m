@@ -7,8 +7,15 @@
 //
 
 #import "ToyDetailedViewController.h"
+#import "Toy.h"
+
 
 @interface ToyDetailedViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel* itemLabel;
+@property (weak, nonatomic) IBOutlet UILabel* brandLabel;
+@property (weak, nonatomic) IBOutlet UILabel* priceLabel;
+@property (weak, nonatomic) IBOutlet UITextView* notesField;
 
 @end
 
@@ -16,10 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.selectedToy;
+    self.navigationItem.title = [self.selectedToy getName];
+    self.itemLabel.text = [@"Item: " stringByAppendingString:[self.selectedToy getName]] ;
+    self.brandLabel.text = [@"Brand: " stringByAppendingString: [self.selectedToy getBrand]];
+    self.priceLabel.text = [@"Price: $" stringByAppendingString: [self.selectedToy getPrice]];
+    self.notesField.text = [self.selectedToy getNotes];
     // Do any additional setup after loading the view.
 }
 
+@end
 /*
 #pragma mark - Navigation
 
@@ -29,5 +41,3 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-@end

@@ -132,6 +132,13 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <viewLayoutGuide key="safeArea" id="TWs-gD-HMy"/>
                     </view>
+                    <connections>
+                        <outlet property="brandField" destination="tYP-kY-af3" id="e7H-b2-Oij"/>
+                        <outlet property="itemField" destination="GuP-Oo-3wi" id="cno-bx-3Y8"/>
+                        <outlet property="notesField" destination="vCS-fF-gRi" id="XcG-zq-hBb"/>
+                        <outlet property="priceField" destination="HgN-Ld-W70" id="qDX-9K-opR"/>
+                        <segue destination="7Bt-17-VPZ" kind="push" identifier="addButtonClicked" id="9yk-Ks-pqY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgv-uc-vhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -198,6 +205,12 @@
                         <viewLayoutGuide key="safeArea" id="xAe-Yd-avs"/>
                     </view>
                     <navigationItem key="navigationItem" id="N21-WA-eGX"/>
+                    <connections>
+                        <outlet property="brandLabel" destination="P5E-eZ-SJB" id="9CQ-qE-Jhb"/>
+                        <outlet property="itemLabel" destination="wCP-sp-JRj" id="Jck-N6-8Y3"/>
+                        <outlet property="notesField" destination="lzz-QH-yFJ" id="kg6-gl-k7F"/>
+                        <outlet property="priceLabel" destination="VFu-5R-qBU" id="rSl-8i-lx4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KK9-ki-ppM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,4 +235,7 @@
             <point key="canvasLocation" x="-490.39999999999998" y="134.48275862068968"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9yk-Ks-pqY"/>
+    </inferredMetricsTieBreakers>
 </document>

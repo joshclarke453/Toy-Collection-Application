@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "AddToyViewController.h"
 #import "ToyDetailedViewController.h"
+#import "Toy.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ToyTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *cellData;
+@property (nonatomic, strong) NSMutableArray *cellData;
+@property (nonatomic, strong) Toy* addedToy;
 
 @end
 

@@ -14,8 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* brand;
-@property (nonatomic, strong) NSNumber* price;
+@property (nonatomic, strong) NSString* price;
 @property (nonatomic, strong) NSString* addNotes;
+
+- (instancetype)initWithDetails:(NSString*)initName
+                               :(NSString*)initBrand
+                               :(NSString*)initPrice
+                               :(NSString*)initAddNotes;
+- (NSString*)getName;
+- (NSString*)getBrand;
+- (NSString*)getPrice;
+- (NSString*)getNotes;
 
 @end
 
