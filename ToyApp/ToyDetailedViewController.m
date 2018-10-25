@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"name of toy";
+    self.navigationItem.title = self.selectedToy;
     // Do any additional setup after loading the view.
 }
 

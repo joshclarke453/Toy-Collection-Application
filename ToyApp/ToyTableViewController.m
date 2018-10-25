@@ -7,6 +7,8 @@
 //
 
 #import "ToyTableViewController.h"
+#import "AddToyViewController.h"
+#import "ToyDetailedViewController.h"
 
 @interface ToyTableViewController ()
 
@@ -27,7 +29,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"pushToDetail" sender:indexPath];
+}
+
 #pragma mark - Table view data source
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -81,14 +88,24 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //ToyDetailedViewController *selectedToy = [segue destinationViewController];
+    //selectedToy.dataModel = cellData
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([sender isKindOfClass:[NSIndexPath class]]) {
+        if ([segue.destinationViewController isKindOfClass:[ToyDetailedViewController class]]) {
+            ToyDetailedViewController *targetViewController = segue.destinationViewController;
+            NSIndexPath *path = sender;
+            NSString *toyName = self.cellData[path.row];
+            targetViewController.selectedToy = toyName;
+        }
+    }
 }
-*/
+
 
 @end
