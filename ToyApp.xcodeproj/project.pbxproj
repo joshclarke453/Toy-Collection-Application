@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		E9594E942181338300ABF446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594E932181338300ABF446 /* AppDelegate.m */; };
-		E9594E972181338300ABF446 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594E962181338300ABF446 /* ViewController.m */; };
 		E9594E9A2181338300ABF446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9594E982181338300ABF446 /* Main.storyboard */; };
 		E9594E9C2181338500ABF446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9594E9B2181338500ABF446 /* Assets.xcassets */; };
 		E9594E9F2181338500ABF446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9594E9D2181338500ABF446 /* LaunchScreen.storyboard */; };
 		E9594EA22181338500ABF446 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594EA12181338500ABF446 /* main.m */; };
+		E9594EAA218134B400ABF446 /* ToyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594EA9218134B400ABF446 /* ToyTableViewController.m */; };
+		E9594EAD2181412A00ABF446 /* ToyDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594EAC2181412A00ABF446 /* ToyDetailedViewController.m */; };
+		E9594EB02181431B00ABF446 /* AddToyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594EAF2181431B00ABF446 /* AddToyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E9594E8F2181338300ABF446 /* ToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9594E922181338300ABF446 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9594E932181338300ABF446 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E9594E952181338300ABF446 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E9594E962181338300ABF446 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E9594E992181338300ABF446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9594E9B2181338500ABF446 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9594E9E2181338500ABF446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9594EA02181338500ABF446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9594EA12181338500ABF446 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E9594EA8218134B400ABF446 /* ToyTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToyTableViewController.h; sourceTree = "<group>"; };
+		E9594EA9218134B400ABF446 /* ToyTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToyTableViewController.m; sourceTree = "<group>"; };
+		E9594EAB2181412A00ABF446 /* ToyDetailedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToyDetailedViewController.h; sourceTree = "<group>"; };
+		E9594EAC2181412A00ABF446 /* ToyDetailedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToyDetailedViewController.m; sourceTree = "<group>"; };
+		E9594EAE2181431B00ABF446 /* AddToyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddToyViewController.h; sourceTree = "<group>"; };
+		E9594EAF2181431B00ABF446 /* AddToyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddToyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +66,13 @@
 			children = (
 				E9594E922181338300ABF446 /* AppDelegate.h */,
 				E9594E932181338300ABF446 /* AppDelegate.m */,
-				E9594E952181338300ABF446 /* ViewController.h */,
-				E9594E962181338300ABF446 /* ViewController.m */,
 				E9594E982181338300ABF446 /* Main.storyboard */,
+				E9594EAE2181431B00ABF446 /* AddToyViewController.h */,
+				E9594EAF2181431B00ABF446 /* AddToyViewController.m */,
+				E9594EAB2181412A00ABF446 /* ToyDetailedViewController.h */,
+				E9594EAC2181412A00ABF446 /* ToyDetailedViewController.m */,
+				E9594EA8218134B400ABF446 /* ToyTableViewController.h */,
+				E9594EA9218134B400ABF446 /* ToyTableViewController.m */,
 				E9594E9B2181338500ABF446 /* Assets.xcassets */,
 				E9594E9D2181338500ABF446 /* LaunchScreen.storyboard */,
 				E9594EA02181338500ABF446 /* Info.plist */,
@@ -141,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9594E972181338300ABF446 /* ViewController.m in Sources */,
 				E9594EA22181338500ABF446 /* main.m in Sources */,
+				E9594EB02181431B00ABF446 /* AddToyViewController.m in Sources */,
+				E9594EAD2181412A00ABF446 /* ToyDetailedViewController.m in Sources */,
+				E9594EAA218134B400ABF446 /* ToyTableViewController.m in Sources */,
 				E9594E942181338300ABF446 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
