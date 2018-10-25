@@ -15,6 +15,7 @@
 		E9594EAA218134B400ABF446 /* ToyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594EA9218134B400ABF446 /* ToyTableViewController.m */; };
 		E9594EAD2181412A00ABF446 /* ToyDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594EAC2181412A00ABF446 /* ToyDetailedViewController.m */; };
 		E9594EB02181431B00ABF446 /* AddToyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594EAF2181431B00ABF446 /* AddToyViewController.m */; };
+		E9988A012181E2DD001EEA79 /* Toy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9988A002181E2DD001EEA79 /* Toy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		E9594EAC2181412A00ABF446 /* ToyDetailedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToyDetailedViewController.m; sourceTree = "<group>"; };
 		E9594EAE2181431B00ABF446 /* AddToyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddToyViewController.h; sourceTree = "<group>"; };
 		E9594EAF2181431B00ABF446 /* AddToyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddToyViewController.m; sourceTree = "<group>"; };
+		E99889FF2181E2DD001EEA79 /* Toy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toy.h; sourceTree = "<group>"; };
+		E9988A002181E2DD001EEA79 /* Toy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Toy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				E9594E922181338300ABF446 /* AppDelegate.h */,
 				E9594E932181338300ABF446 /* AppDelegate.m */,
 				E9594E982181338300ABF446 /* Main.storyboard */,
+				E99889FF2181E2DD001EEA79 /* Toy.h */,
+				E9988A002181E2DD001EEA79 /* Toy.m */,
 				E9594EAE2181431B00ABF446 /* AddToyViewController.h */,
 				E9594EAF2181431B00ABF446 /* AddToyViewController.m */,
 				E9594EAB2181412A00ABF446 /* ToyDetailedViewController.h */,
@@ -151,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9988A012181E2DD001EEA79 /* Toy.m in Sources */,
 				E9594EA22181338500ABF446 /* main.m in Sources */,
 				E9594EB02181431B00ABF446 /* AddToyViewController.m in Sources */,
 				E9594EAD2181412A00ABF446 /* ToyDetailedViewController.m in Sources */,
