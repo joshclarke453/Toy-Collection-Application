@@ -9,6 +9,7 @@
 #import "AddToyViewController.h"
 #import "ToyTableViewController.h"
 #import "Toy.h"
+#import <Photos/Photos.h>
 
 @interface AddToyViewController ()
 
@@ -16,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *brandField;
 @property (weak, nonatomic) IBOutlet UITextField *priceField;
 @property (weak, nonatomic) IBOutlet UITextView *notesField;
-@property (weak, nonatomic) Toy* addedToy;
+@property (weak, nonatomic) NSString *imageName;
 
 @end
 
@@ -30,13 +31,34 @@
 - (IBAction)addToy:(id)sender {
     //Create new Toy obect and add it to the array
     //dismiss the view
-    Toy* nToy = [[Toy alloc] initWithDetails:self.itemField.text :self.brandField.text :self.priceField.text :self.notesField.text];
+    Toy* nToy = [[Toy alloc] initWithDetails: self.itemField.text :self.brandField.text :self.priceField.text :self.notesField.text :self.imageName];
     self.addedToy = nToy;
-    [self performSegueWithIdentifier:@"addButtonClicked" sender:nToy];
 }
 
 - (IBAction)cancel:(id)sender {
-    //dismiss the view, add nothing.
+    [self dismissViewControllerAnimated:NO completion:NULL];
+}
+
+- (IBAction)clickedOnImage:(UITapGestureRecognizer *)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = chosenImage;
+    NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
+    NSString *uniqueFileName = [NSString stringWithFormat:guid, nil];
+    self.imageName = uniqueFileName;
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    NSLog(@"gt here");
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 /*
@@ -48,17 +70,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if ([sender isKindOfClass:[Toy class]]) {
-        if ([segue.destinationViewController isKindOfClass:[ToyTableViewController class]]) {
-            ToyTableViewController *targetViewController = segue.destinationViewController;
-            Toy *thisToy = self.addedToy;
-            targetViewController.addedToy = thisToy;
-        }
-    }
-}
 
 @end

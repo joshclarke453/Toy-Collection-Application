@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToyTableViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

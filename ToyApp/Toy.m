@@ -13,11 +13,25 @@
 - (instancetype)initWithDetails:(NSString*)initName
                                :(NSString*)initBrand
                                :(NSString*)initPrice
-                               :(NSString*)initAddNotes {
+                               :(NSString*)initAddNotes
+                               :(NSString*)initImageName {
     self.name = initName;
     self.brand = initBrand;
     self.price = initPrice;
     self.addNotes = initAddNotes;
+    self.imageName = initImageName;
+    return self;
+}
+
+- (instancetype)initWithoutPicture:(NSString *)initName
+                                  :(NSString*)initBrand
+                                  :(NSString*)initPrice
+                                  :(NSString*)initAddNotes {
+    self.name = initName;
+    self.brand = initBrand;
+    self.price = initPrice;
+    self.addNotes = initAddNotes;
+    self.imageName = @"yo";
     return self;
 }
 
@@ -35,6 +49,10 @@
 
 -(NSString*) getNotes {
     return self.addNotes;
+}
+
+-(NSString*) getImageName {
+    return self.imageName;
 }
 
 @end

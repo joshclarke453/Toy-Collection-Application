@@ -12,7 +12,6 @@
 #import "Toy.h"
 
 @interface ToyTableViewController ()
-
 @end
 
 @implementation ToyTableViewController
@@ -22,23 +21,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     cellData = [[NSMutableArray alloc] init];
-    Toy* t1 = [[Toy alloc] initWithDetails:@"NES" :@"Nintendo" : @"259.99" :@"Childhood Dreams"];
+    Toy* t1 = [[Toy alloc] initWithoutPicture:@"NES" :@"Nintendo" : @"259.99" :@"Childhood Dreams"];
     [cellData addObject:t1];
     self.navigationItem.title = @"List Of Toys";
-    if (self.addedToy != nil) {
-        [cellData addObject:self.addedToy];
-        self.addedToy = nil;
-    }
-    [self.tableView reloadData];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"pushToDetail" sender:indexPath];
+}
+
+-(void)saveArrayToFile {
+    NSArray* path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentFolder = [path objectAtIndex:0];
+    NSString *filePath = [documentFolder stringByAppendingFormat:@"toyList.plist"];
+    [cellData writeToFile:filePath atomically:YES];
+}
+
+-(void)readArrayFromFile {
+    NSArray* path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentFolder = [path objectAtIndex:0];
+    NSString *filePath = [documentFolder stringByAppendingFormat:@"toyList.plist"];
+    NSArray *plistArray = [NSArray arrayWithContentsOfFile: filePath];
+    for (int i = 0; 0 < [plistArray count]; i++) {
+        [cellData addObject:plistArray[i]];
+    }
 }
 
 #pragma mark - Table view data source
@@ -57,6 +63,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"toyCell" forIndexPath:indexPath];
     Toy *toyName = cellData[indexPath.row];
     cell.textLabel.text = [toyName getName];
+    cell.imageView.image = [UIImage imageNamed:[toyName getImageName]];
     
     return cell;
 }
@@ -98,6 +105,12 @@
 
 
 #pragma mark - Navigation
+- (IBAction)prepareForUnwind:(UIStoryboardSegue*)segue {
+    AddToyViewController* tvd = segue.sourceViewController;
+    self.addedToy = tvd.addedToy;
+    [cellData addObject:self.addedToy];
+    [self.tableView reloadData];
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

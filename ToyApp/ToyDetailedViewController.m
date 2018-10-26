@@ -12,6 +12,7 @@
 
 @interface ToyDetailedViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel* itemLabel;
 @property (weak, nonatomic) IBOutlet UILabel* brandLabel;
 @property (weak, nonatomic) IBOutlet UILabel* priceLabel;
@@ -28,6 +29,7 @@
     self.brandLabel.text = [@"Brand: " stringByAppendingString: [self.selectedToy getBrand]];
     self.priceLabel.text = [@"Price: $" stringByAppendingString: [self.selectedToy getPrice]];
     self.notesField.text = [self.selectedToy getNotes];
+    self.imageView.image = [UIImage imageNamed: [self.selectedToy getImageName]];
     // Do any additional setup after loading the view.
 }
 

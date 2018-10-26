@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Toy.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddToyViewController : UIViewController
+@interface AddToyViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) Toy* addedToy;
 
 @end
 

@@ -126,21 +126,39 @@
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="addToy:" destination="OcP-GQ-uCS" eventType="touchUpInside" id="7T2-cg-9ct"/>
+                                    <segue destination="HeM-sJ-XWf" kind="unwind" unwindAction="prepareForUnwind:" id="fyn-xE-Pt7"/>
                                 </connections>
                             </button>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RLG-ea-YQG">
+                                <rect key="frame" x="67" y="60" width="240" height="195"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ByT-fd-9xy" appends="YES" id="5co-dQ-9W8"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <viewLayoutGuide key="safeArea" id="TWs-gD-HMy"/>
                     </view>
                     <connections>
                         <outlet property="brandField" destination="tYP-kY-af3" id="e7H-b2-Oij"/>
+                        <outlet property="imageView" destination="RLG-ea-YQG" id="xo1-vl-2hM"/>
                         <outlet property="itemField" destination="GuP-Oo-3wi" id="cno-bx-3Y8"/>
                         <outlet property="notesField" destination="vCS-fF-gRi" id="XcG-zq-hBb"/>
                         <outlet property="priceField" destination="HgN-Ld-W70" id="qDX-9K-opR"/>
-                        <segue destination="7Bt-17-VPZ" kind="push" identifier="addButtonClicked" id="9yk-Ks-pqY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgv-uc-vhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HeM-sJ-XWf" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="ByT-fd-9xy">
+                    <connections>
+                        <action selector="clickedOnImage:" destination="OcP-GQ-uCS" id="Y4A-D2-a2s"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-490.39999999999998" y="850.52473763118451"/>
         </scene>
@@ -207,6 +225,7 @@
                     <navigationItem key="navigationItem" id="N21-WA-eGX"/>
                     <connections>
                         <outlet property="brandLabel" destination="P5E-eZ-SJB" id="9CQ-qE-Jhb"/>
+                        <outlet property="imageView" destination="wjJ-Cr-ERA" id="CSQ-in-8Qt"/>
                         <outlet property="itemLabel" destination="wCP-sp-JRj" id="Jck-N6-8Y3"/>
                         <outlet property="notesField" destination="lzz-QH-yFJ" id="kg6-gl-k7F"/>
                         <outlet property="priceLabel" destination="VFu-5R-qBU" id="rSl-8i-lx4"/>
@@ -235,7 +254,4 @@
             <point key="canvasLocation" x="-490.39999999999998" y="134.48275862068968"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="9yk-Ks-pqY"/>
-    </inferredMetricsTieBreakers>
 </document>
