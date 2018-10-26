@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,12 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString* price;
 @property (nonatomic, strong) NSString* addNotes;
 @property (nonatomic, strong) NSString* imageName;
+@property (nonatomic, strong) UIImage* image;
 
 - (instancetype)initWithDetails:(NSString*)initName
                                :(NSString*)initBrand
                                :(NSString*)initPrice
                                :(NSString*)initAddNotes
-                               :(NSString*)initImageName;
+                               :(NSString*)initImageName
+                               :(UIImage*)initImage;
 
 - (instancetype)initWithoutPicture:(NSString*)initName
                                   :(NSString*)initBrand
@@ -34,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString*)getPrice;
 - (NSString*)getNotes;
 - (NSString*)getImageName;
+- (UIImage*)getImage;
 
 @end
 

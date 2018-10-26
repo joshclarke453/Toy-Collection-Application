@@ -14,12 +14,14 @@
                                :(NSString*)initBrand
                                :(NSString*)initPrice
                                :(NSString*)initAddNotes
-                               :(NSString*)initImageName {
+                               :(NSString*)initImageName
+                               :(UIImage*)initImage{
     self.name = initName;
     self.brand = initBrand;
     self.price = initPrice;
     self.addNotes = initAddNotes;
     self.imageName = initImageName;
+    self.image = initImage;
     return self;
 }
 
@@ -53,6 +55,10 @@
 
 -(NSString*) getImageName {
     return self.imageName;
+}
+
+-(UIImage*) getImage {
+    return self.image;
 }
 
 @end

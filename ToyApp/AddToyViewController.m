@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *priceField;
 @property (weak, nonatomic) IBOutlet UITextView *notesField;
 @property (weak, nonatomic) NSString *imageName;
+@property (weak, nonatomic) UIImage *image;
 
 @end
 
@@ -31,7 +32,7 @@
 - (IBAction)addToy:(id)sender {
     //Create new Toy obect and add it to the array
     //dismiss the view
-    Toy* nToy = [[Toy alloc] initWithDetails: self.itemField.text :self.brandField.text :self.priceField.text :self.notesField.text :self.imageName];
+    Toy* nToy = [[Toy alloc] initWithDetails: self.itemField.text :self.brandField.text :self.priceField.text :self.notesField.text :self.imageName :self.image];
     self.addedToy = nToy;
 }
 
@@ -50,12 +51,16 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
-    NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSString *uniqueFileName = [NSString stringWithFormat:guid, nil];
+    NSString *guid = [[NSUUID new] UUIDString];
+    NSString *uniqueFileName = [NSString stringWithFormat:@"%@_%@", guid, @".png"];
     self.imageName = uniqueFileName;
+    self.image = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    NSLog(@"gt here");
 }
+
+//-(NSString) generateFileName {
+//
+//}
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:NULL];

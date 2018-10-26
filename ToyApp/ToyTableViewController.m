@@ -63,7 +63,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"toyCell" forIndexPath:indexPath];
     Toy *toyName = cellData[indexPath.row];
     cell.textLabel.text = [toyName getName];
-    cell.imageView.image = [UIImage imageNamed:[toyName getImageName]];
+    cell.detailTextLabel.text = [toyName getBrand];
+    //This doesnt work, god only knows why...
+    cell.imageView.image = [toyName getImage];
     
     return cell;
 }
