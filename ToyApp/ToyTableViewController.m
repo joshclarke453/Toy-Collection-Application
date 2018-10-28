@@ -16,6 +16,7 @@
 
 @implementation ToyTableViewController
 
+@synthesize data;
 @synthesize cellData;
 
 - (void)viewDidLoad {
@@ -50,8 +51,8 @@
 
 -(void)readArrayFromFile {
     self.cellData = [self.cellData init];
-    NSDictionary *toyDict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"toys" ofType:@"plist"]];
-    NSEnumerator *enumerator = [toyDict objectEnumerator];
+    self.data = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"toys" ofType:@"plist"]];
+    NSEnumerator *enumerator = [self.data objectEnumerator];
     id value;
     while ((value = [enumerator nextObject]) != nil) {
         NSArray *allValues = [value allValues];
@@ -64,12 +65,21 @@
         UIImage* toyImage = [self getImageFromDocuments:toyImageName];
         Toy *tempToy = [[Toy alloc] initWithDetails: toyName : toyBrand : toyPrice : toyNotes : toyImageName : toyImage];
         if (tempToy.image) {
-            NSLog(@"Not Nil");
+            NSLog(@"Not Null");
         } else {
-            NSLog(@"Null");
+            //NSLog(@"Null");
         }
         [self.cellData addObject:tempToy];
     }
+}
+
+-(void)writeArrayToFile {
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"toys" ofType:@"plist"];
+    NSMutableDictionary *toyDict = self.data;
+    if ([toyDict writeToFile:filePath atomically:YES])
+        NSLog(@"data saved to plist");
+    else
+        NSLog(@"unable to save data to plist");
 }
 
 #pragma mark - Table view data source
@@ -128,7 +138,11 @@
     AddToyViewController* tvd = segue.sourceViewController;
     self.addedToy = tvd.addedToy;
     [cellData addObject:self.addedToy];
+    //id objects[] = [self.addedToy getNotes],[self.addedToy getName],@"",[self.addedToy getBrand],@"",[self.addedToy getImageName],@"",[self.addedToy getPrice],@"", nil];
+    NSMutableDictionary *newDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self.addedToy getNotes],@"AddNotes",[self.addedToy getName],@"Name",[self.addedToy getBrand],@"Brand",[self.addedToy getImageName],@"ImageName",[self.addedToy getPrice],@"Price", nil];
+    [self.data setObject:newDict forKey:[self.addedToy getName]];
     [self saveImageToDocuments];
+    [self writeArrayToFile];
     [self.tableView reloadData];
 }
 

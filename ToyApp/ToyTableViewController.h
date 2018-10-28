@@ -18,8 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) Toy* addedToy;
 @property (nonatomic, strong) NSMutableArray *cellData;
+@property (nonatomic, strong) NSMutableDictionary *data;
 
-//-(void)saveArrayToFile;
+-(void)writeArrayToFile;
 -(void)readArrayFromFile;
 
 @end
