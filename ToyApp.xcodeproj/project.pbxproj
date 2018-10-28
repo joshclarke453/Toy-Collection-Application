@@ -52,6 +52,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E929AE7621865C3800085F74 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
 		E9594E862181338300ABF446 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +78,7 @@
 		E9594E912181338300ABF446 /* ToyApp */ = {
 			isa = PBXGroup;
 			children = (
+				E929AE7621865C3800085F74 /* Documents */,
 				E929AE6C21863AEB00085F74 /* p.png */,
 				E9594E922181338300ABF446 /* AppDelegate.h */,
 				E9594E932181338300ABF446 /* AppDelegate.m */,

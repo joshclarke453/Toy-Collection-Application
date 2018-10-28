@@ -3,36 +3,56 @@
 <plist version="1.0">
 <dict>
 	<key>Super Mario NES</key>
-	<array>
+	<dict>
+		<key>Name</key>
 		<string>Super Mario NES</string>
+		<key>Brand</key>
 		<string>Nintendo</string>
+		<key>Price</key>
 		<string>17.99</string>
+		<key>AddNotes</key>
 		<string>A 2D Platformer game made by Nintendo in 1985.</string>
+		<key>ImageName</key>
 		<string>220px-NES_Super_Mario_Bros.png</string>
-	</array>
+	</dict>
 	<key>Lego Classic Set</key>
-	<array>
+	<dict>
+		<key>Name</key>
 		<string>Lego Classic Set</string>
+		<key>Brand</key>
 		<string>Lego</string>
+		<key>Price</key>
 		<string>40.00</string>
+		<key>AddNotes</key>
 		<string>The original Lego set</string>
+		<key>ImageName</key>
 		<string>6000199055604.jpg</string>
-	</array>
+	</dict>
 	<key>Blokus</key>
-	<array>
+	<dict>
+		<key>Name</key>
 		<string>Blokus</string>
+		<key>Brand</key>
 		<string>Mattel</string>
+		<key>Price</key>
 		<string>25.00</string>
+		<key>AddNotes</key>
 		<string>A strategy board game.</string>
+		<key>ImageName</key>
 		<string>81LEjjVViUL._SL1500_-zoom.jpg</string>
-	</array>
+	</dict>
 	<key>Thanos</key>
-	<array>
+	<dict>
+		<key>Name</key>
 		<string>Thanos Bobblehead</string>
+		<key>Brand</key>
 		<string>Marvel</string>
+		<key>Price</key>
 		<string>34.99</string>
+		<key>AddNotes</key>
 		<string>A bobblehead of the villain Thanos from The Avengers: Infinity War</string>
+		<key>ImageName</key>
 		<string>31357f81-6b3f-4927-bc2b-6f8164bc65a9.jpg</string>
-	</array>
+	</dict>
 </dict>
 </plist>

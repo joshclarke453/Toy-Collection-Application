@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *brandField;
 @property (weak, nonatomic) IBOutlet UITextField *priceField;
 @property (weak, nonatomic) IBOutlet UITextView *notesField;
-@property (weak, nonatomic) NSString *imageName;
+@property (strong, nonatomic) NSString *imageName;
 @property (weak, nonatomic) UIImage *image;
 
 @end
@@ -26,12 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)addToy:(id)sender {
-    //Create new Toy obect and add it to the array
-    //dismiss the view
     Toy* nToy = [[Toy alloc] initWithDetails: self.itemField.text :self.brandField.text :self.priceField.text :self.notesField.text :self.imageName :self.image];
     self.addedToy = nToy;
 }
@@ -50,29 +47,24 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
-    NSString *guid = [[NSUUID new] UUIDString];
-    NSString *uniqueFileName = [NSString stringWithFormat:@"%@_%@", guid, @".png"];
+    NSString *ranName = [self generateRandomString:14];
+    NSString *uniqueFileName = [NSString stringWithFormat:@"%@%@", ranName, @".png"];
     self.imageName = uniqueFileName;
     self.image = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-//-(NSString) generateFileName {
-//
-//}
-
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSString*) generateRandomString:(int) len {
+    NSString* letters = @"abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    for (int i=0 ; i<len ; i++) {
+        [randomString appendFormat:@"%C", [letters characterAtIndex:arc4random_uniform((int)[letters length]) % [letters length]]];
+    }
+    return randomString;
 }
-*/
 
 @end

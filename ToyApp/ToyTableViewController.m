@@ -21,8 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     cellData = [[NSMutableArray alloc] init];
-    Toy* t1 = [[Toy alloc] initWithoutPicture:@"NES" :@"Nintendo" : @"259.99" :@"Childhood Dreams"];
-    [cellData addObject:t1];
+    //Toy* t1 = [[Toy alloc] initWithoutPicture:@"NES" :@"Nintendo" : @"259.99" :@"Childhood Dreams"];
+    //[cellData addObject:t1];
+    [self readArrayFromFile];
     self.navigationItem.title = @"List Of Toys";
 }
 
@@ -30,20 +31,44 @@
     [self performSegueWithIdentifier:@"pushToDetail" sender:indexPath];
 }
 
--(void)saveArrayToFile {
-    NSArray* path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentFolder = [path objectAtIndex:0];
-    NSString *filePath = [documentFolder stringByAppendingFormat:@"toyList.plist"];
-    [cellData writeToFile:filePath atomically:YES];
+-(void)saveImageToDocuments {
+    NSData *pngData = UIImagePNGRepresentation([self.addedToy getImage]);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:[self.addedToy getImageName]];
+    [pngData writeToFile:filePath atomically:YES];
+}
+
+-(UIImage*)getImageFromDocuments:(NSString*) toyName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:toyName];
+    NSData *pngData = [NSData dataWithContentsOfFile:filePath];
+    UIImage *image = [UIImage imageWithData:pngData];
+    return image;
 }
 
 -(void)readArrayFromFile {
-    NSArray* path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentFolder = [path objectAtIndex:0];
-    NSString *filePath = [documentFolder stringByAppendingFormat:@"toyList.plist"];
-    NSArray *plistArray = [NSArray arrayWithContentsOfFile: filePath];
-    for (int i = 0; 0 < [plistArray count]; i++) {
-        [cellData addObject:plistArray[i]];
+    self.cellData = [self.cellData init];
+    NSDictionary *toyDict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"toys" ofType:@"plist"]];
+    NSEnumerator *enumerator = [toyDict objectEnumerator];
+    id value;
+    while ((value = [enumerator nextObject]) != nil) {
+        NSArray *allValues = [value allValues];
+        //NSLog(@"%@__%@", allKeys, allValues);
+        NSString* toyNotes = allValues[0];
+        NSString* toyName = allValues[1];
+        NSString* toyBrand = allValues[2];
+        NSString* toyImageName = allValues[3];
+        NSString* toyPrice = allValues[4];
+        UIImage* toyImage = [self getImageFromDocuments:toyImageName];
+        Toy *tempToy = [[Toy alloc] initWithDetails: toyName : toyBrand : toyPrice : toyNotes : toyImageName : toyImage];
+        if (tempToy.image) {
+            NSLog(@"Not Nil");
+        } else {
+            NSLog(@"Null");
+        }
+        [self.cellData addObject:tempToy];
     }
 }
 
@@ -66,20 +91,10 @@
     cell.textLabel.text = [toyName getName];
     cell.detailTextLabel.numberOfLines = 2;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@", [toyName getBrand],[toyName getPrice]];
-    //This doesnt work, god only knows why...
     cell.imageView.image = [toyName getImage];
     
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
 /*
 // Override to support editing the table view.
@@ -113,6 +128,7 @@
     AddToyViewController* tvd = segue.sourceViewController;
     self.addedToy = tvd.addedToy;
     [cellData addObject:self.addedToy];
+    [self saveImageToDocuments];
     [self.tableView reloadData];
 }
 
@@ -122,10 +138,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //ToyDetailedViewController *selectedToy = [segue destinationViewController];
-    //selectedToy.dataModel = cellData
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if ([sender isKindOfClass:[NSIndexPath class]]) {
         if ([segue.destinationViewController isKindOfClass:[ToyDetailedViewController class]]) {
             ToyDetailedViewController *targetViewController = segue.destinationViewController;

@@ -29,17 +29,19 @@
     self.brandLabel.text = [@"Brand: " stringByAppendingString: [self.selectedToy getBrand]];
     self.priceLabel.text = [@"Price: $" stringByAppendingString: [self.selectedToy getPrice]];
     self.notesField.text = [self.selectedToy getNotes];
-    self.imageView.image = [UIImage imageNamed: [self.selectedToy getImageName]];
+    //self.imageView.image = [UIImage imageNamed: [self.selectedToy getImageName]];
+    self.imageView.image = [self getImageFromDocuments:self.selectedToy];
+    NSLog(@"did it get here?");
     // Do any additional setup after loading the view.
 }
 
-@end
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UIImage*)getImageFromDocuments:(Toy*) selectedToy {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:[selectedToy getImageName]];
+    NSData *pngData = [NSData dataWithContentsOfFile:filePath];
+    UIImage *image = [UIImage imageWithData:pngData];
+    return image;
 }
-*/
+
+@end
