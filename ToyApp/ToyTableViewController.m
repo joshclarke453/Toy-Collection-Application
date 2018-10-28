@@ -60,10 +60,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"toyCell" forIndexPath:indexPath];
+    static NSString *cellId = @"toyCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     Toy *toyName = cellData[indexPath.row];
     cell.textLabel.text = [toyName getName];
-    cell.detailTextLabel.text = [toyName getBrand];
+    cell.detailTextLabel.numberOfLines = 2;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@", [toyName getBrand],[toyName getPrice]];
     //This doesnt work, god only knows why...
     cell.imageView.image = [toyName getImage];
     
@@ -112,6 +114,10 @@
     self.addedToy = tvd.addedToy;
     [cellData addObject:self.addedToy];
     [self.tableView reloadData];
+}
+
+- (IBAction)cancelUnwind:(UIStoryboardSegue*)segue {
+    
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

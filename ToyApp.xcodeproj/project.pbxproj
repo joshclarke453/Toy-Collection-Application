@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E929AE602186294B00085F74 /* toys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E929AE5F2186294B00085F74 /* toys.plist */; };
+		E929AE6D21863AEB00085F74 /* p.png in Resources */ = {isa = PBXBuildFile; fileRef = E929AE6C21863AEB00085F74 /* p.png */; };
 		E9594E942181338300ABF446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9594E932181338300ABF446 /* AppDelegate.m */; };
 		E9594E9A2181338300ABF446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9594E982181338300ABF446 /* Main.storyboard */; };
 		E9594E9C2181338500ABF446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9594E9B2181338500ABF446 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E929AE5F2186294B00085F74 /* toys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = toys.plist; sourceTree = "<group>"; };
+		E929AE6C21863AEB00085F74 /* p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = p.png; path = ../../../Downloads/p.png; sourceTree = "<group>"; };
 		E9594E8F2181338300ABF446 /* ToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9594E922181338300ABF446 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9594E932181338300ABF446 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -67,6 +71,7 @@
 		E9594E912181338300ABF446 /* ToyApp */ = {
 			isa = PBXGroup;
 			children = (
+				E929AE6C21863AEB00085F74 /* p.png */,
 				E9594E922181338300ABF446 /* AppDelegate.h */,
 				E9594E932181338300ABF446 /* AppDelegate.m */,
 				E9594E982181338300ABF446 /* Main.storyboard */,
@@ -82,6 +87,7 @@
 				E9594E9D2181338500ABF446 /* LaunchScreen.storyboard */,
 				E9594EA02181338500ABF446 /* Info.plist */,
 				E9594EA12181338500ABF446 /* main.m */,
+				E929AE5F2186294B00085F74 /* toys.plist */,
 			);
 			path = ToyApp;
 			sourceTree = "<group>";
@@ -146,6 +152,8 @@
 				E9594E9F2181338500ABF446 /* LaunchScreen.storyboard in Resources */,
 				E9594E9C2181338500ABF446 /* Assets.xcassets in Resources */,
 				E9594E9A2181338300ABF446 /* Main.storyboard in Resources */,
+				E929AE6D21863AEB00085F74 /* p.png in Resources */,
+				E929AE602186294B00085F74 /* toys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

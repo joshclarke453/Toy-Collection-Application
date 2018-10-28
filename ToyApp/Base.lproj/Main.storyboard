@@ -18,12 +18,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="toyCell" id="GIt-Ct-DUl">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="toyCell" textLabel="jpk-El-LTr" detailTextLabel="Fdl-9U-6mq" style="IBUITableViewCellStyleSubtitle" id="GIt-Ct-DUl">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GIt-Ct-DUl" id="dFT-Ab-idf">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jpk-El-LTr">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fdl-9U-6mq">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
                             </tableViewCell>
@@ -117,7 +133,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancel:" destination="OcP-GQ-uCS" eventType="touchUpInside" id="1pX-PE-cSh"/>
+                                    <segue destination="HeM-sJ-XWf" kind="unwind" unwindAction="cancelUnwind:" id="lLh-iP-q2j"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f72-kj-KBm">
@@ -129,7 +145,7 @@
                                     <segue destination="HeM-sJ-XWf" kind="unwind" unwindAction="prepareForUnwind:" id="fyn-xE-Pt7"/>
                                 </connections>
                             </button>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RLG-ea-YQG">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="p.png" translatesAutoresizingMaskIntoConstraints="NO" id="RLG-ea-YQG">
                                 <rect key="frame" x="67" y="60" width="240" height="195"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -150,6 +166,7 @@
                         <outlet property="itemField" destination="GuP-Oo-3wi" id="cno-bx-3Y8"/>
                         <outlet property="notesField" destination="vCS-fF-gRi" id="XcG-zq-hBb"/>
                         <outlet property="priceField" destination="HgN-Ld-W70" id="qDX-9K-opR"/>
+                        <segue destination="HeM-sJ-XWf" kind="unwind" unwindAction="cancelUnwind:" id="eCu-DP-K4s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgv-uc-vhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,4 +271,7 @@
             <point key="canvasLocation" x="-490.39999999999998" y="134.48275862068968"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="p.png" width="640" height="480"/>
+    </resources>
 </document>

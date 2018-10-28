@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Super Mario NES</key>
+	<array>
+		<string>Super Mario NES</string>
+		<string>Nintendo</string>
+		<string>17.99</string>
+		<string>A 2D Platformer game made by Nintendo in 1985.</string>
+		<string>220px-NES_Super_Mario_Bros.png</string>
+	</array>
+	<key>Lego Classic Set</key>
+	<array>
+		<string>Lego Classic Set</string>
+		<string>Lego</string>
+		<string>40.00</string>
+		<string>The original Lego set</string>
+		<string>6000199055604.jpg</string>
+	</array>
+	<key>Blokus</key>
+	<array>
+		<string>Blokus</string>
+		<string>Mattel</string>
+		<string>25.00</string>
+		<string>A strategy board game.</string>
+		<string>81LEjjVViUL._SL1500_-zoom.jpg</string>
+	</array>
+	<key>Thanos</key>
+	<array>
+		<string>Thanos Bobblehead</string>
+		<string>Marvel</string>
+		<string>34.99</string>
+		<string>A bobblehead of the villain Thanos from The Avengers: Infinity War</string>
+		<string>31357f81-6b3f-4927-bc2b-6f8164bc65a9.jpg</string>
+	</array>
+</dict>
+</plist>

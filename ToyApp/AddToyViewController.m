@@ -37,7 +37,6 @@
 }
 
 - (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:NULL];
 }
 
 - (IBAction)clickedOnImage:(UITapGestureRecognizer *)sender {
