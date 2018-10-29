@@ -7,10 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "ToyTableViewController.h"
 
 @interface AppDelegate ()
 
-//@property (strong, nonatomic)ToyTableViewController* vc;
+@property (strong, nonatomic)ToyTableViewController* vc;
 
 @end
 
@@ -18,10 +19,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    //if (self.vc == nil) {
-    //    self.vc = [ToyTableViewController alloc];
-    //}
     return YES;
 }
 
@@ -41,7 +38,7 @@
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    //[self.vc readArrayFromFile];
+    [self.vc readArrayFromFile];
     NSLog(@"Read File we entered foreground");
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }

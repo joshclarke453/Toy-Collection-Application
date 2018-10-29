@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Toy.h"
+#import "ToyTableViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

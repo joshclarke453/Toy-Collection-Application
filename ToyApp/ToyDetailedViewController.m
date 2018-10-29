@@ -29,16 +29,17 @@
     self.brandLabel.text = [@"Brand: " stringByAppendingString: [self.selectedToy getBrand]];
     self.priceLabel.text = [@"Price: $" stringByAppendingString: [self.selectedToy getPrice]];
     self.notesField.text = [self.selectedToy getNotes];
-    //self.imageView.image = [UIImage imageNamed: [self.selectedToy getImageName]];
-    self.imageView.image = [self getImageFromDocuments:self.selectedToy];
+    self.imageView.image = [self getImageFromDocuments:[self.selectedToy getImageName]];
     NSLog(@"did it get here?");
-    // Do any additional setup after loading the view.
 }
 
--(UIImage*)getImageFromDocuments:(Toy*) selectedToy {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:[selectedToy getImageName]];
+-(UIImage*)getImageFromDocuments:(NSString*) toyName {
+    NSString *path = [[NSBundle mainBundle] resourcePath];
+    NSLog(path, nil);
+    NSString *toyPicsPath = @"ToyPics";
+    NSString *toyPicsPath2 = [path stringByAppendingPathComponent:toyPicsPath];
+    NSString *filePath = [toyPicsPath2 stringByAppendingPathComponent:toyName];
+    NSLog(filePath, nil);
     NSData *pngData = [NSData dataWithContentsOfFile:filePath];
     UIImage *image = [UIImage imageWithData:pngData];
     return image;

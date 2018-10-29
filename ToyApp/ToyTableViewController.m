@@ -22,8 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     cellData = [[NSMutableArray alloc] init];
-    //Toy* t1 = [[Toy alloc] initWithoutPicture:@"NES" :@"Nintendo" : @"259.99" :@"Childhood Dreams"];
-    //[cellData addObject:t1];
     [self readArrayFromFile];
     self.navigationItem.title = @"List Of Toys";
 }
@@ -34,16 +32,18 @@
 
 -(void)saveImageToDocuments {
     NSData *pngData = UIImagePNGRepresentation([self.addedToy getImage]);
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:[self.addedToy getImageName]];
+    NSString *path = [[NSBundle mainBundle] resourcePath];
+    NSString *toyPicsPath = @"ToyPics";
+    NSString *toyPicsPath2 = [path stringByAppendingPathComponent:toyPicsPath];
+    NSString *filePath = [toyPicsPath2 stringByAppendingPathComponent:[self.addedToy getImageName]];
     [pngData writeToFile:filePath atomically:YES];
 }
 
 -(UIImage*)getImageFromDocuments:(NSString*) toyName {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *filePath = [documentsPath stringByAppendingPathComponent:toyName];
+    NSString *path = [[NSBundle mainBundle] resourcePath];
+    NSString *toyPicsPath = @"ToyPics";
+    NSString *toyPicsPath2 = [path stringByAppendingPathComponent:toyPicsPath];
+    NSString *filePath = [toyPicsPath2 stringByAppendingPathComponent:toyName];
     NSData *pngData = [NSData dataWithContentsOfFile:filePath];
     UIImage *image = [UIImage imageWithData:pngData];
     return image;
@@ -54,20 +54,33 @@
     self.data = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"toys" ofType:@"plist"]];
     NSEnumerator *enumerator = [self.data objectEnumerator];
     id value;
-    while ((value = [enumerator nextObject]) != nil) {
+    NSString* toyNotes;
+    NSString* toyName;
+    NSString* toyBrand;
+    NSString* toyImageName;
+    NSString* toyPrice;
+    while (value = [enumerator nextObject]) {
         NSArray *allValues = [value allValues];
-        //NSLog(@"%@__%@", allKeys, allValues);
-        NSString* toyNotes = allValues[0];
-        NSString* toyName = allValues[1];
-        NSString* toyBrand = allValues[2];
-        NSString* toyImageName = allValues[3];
-        NSString* toyPrice = allValues[4];
+        NSArray *allKeys = [value allKeys];
+        if ([allKeys[0] isEqualToString:@"AddNotes"]) {
+            toyNotes = allValues[0];
+            toyName = allValues[1];
+            toyBrand = allValues[2];
+            toyImageName = allValues[3];
+            toyPrice = allValues[4];
+        } else {
+            toyNotes = allValues[1];
+            toyName = allValues[3];
+            toyBrand = allValues[4];
+            toyImageName = allValues[0];
+            toyPrice = allValues[2];
+        }
         UIImage* toyImage = [self getImageFromDocuments:toyImageName];
         Toy *tempToy = [[Toy alloc] initWithDetails: toyName : toyBrand : toyPrice : toyNotes : toyImageName : toyImage];
         if (tempToy.image) {
             NSLog(@"Not Null");
         } else {
-            //NSLog(@"Null");
+            NSLog(@"Null");
         }
         [self.cellData addObject:tempToy];
     }
@@ -102,36 +115,8 @@
     cell.detailTextLabel.numberOfLines = 2;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@", [toyName getBrand],[toyName getPrice]];
     cell.imageView.image = [toyName getImage];
-    
     return cell;
 }
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 - (IBAction)prepareForUnwind:(UIStoryboardSegue*)segue {
@@ -139,7 +124,7 @@
     self.addedToy = tvd.addedToy;
     [cellData addObject:self.addedToy];
     //id objects[] = [self.addedToy getNotes],[self.addedToy getName],@"",[self.addedToy getBrand],@"",[self.addedToy getImageName],@"",[self.addedToy getPrice],@"", nil];
-    NSMutableDictionary *newDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self.addedToy getNotes],@"AddNotes",[self.addedToy getName],@"Name",[self.addedToy getBrand],@"Brand",[self.addedToy getImageName],@"ImageName",[self.addedToy getPrice],@"Price", nil];
+    NSMutableDictionary *newDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self.addedToy getName],@"Name",[self.addedToy getBrand],@"Brand", [self.addedToy getPrice],@"Price",[self.addedToy getNotes],@"AddNotes",[self.addedToy getImageName],@"ImageName", nil];
     [self.data setObject:newDict forKey:[self.addedToy getName]];
     [self saveImageToDocuments];
     [self writeArrayToFile];
@@ -150,7 +135,6 @@
     
 }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:[NSIndexPath class]]) {
         if ([segue.destinationViewController isKindOfClass:[ToyDetailedViewController class]]) {
