@@ -11,6 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//I created a 'Toy' class which models the Toys we are storing information about. This was mostly just for ease of storing and accessing information
 @interface Toy : NSObject
 
 @property (nonatomic, strong) NSString* name;
@@ -26,11 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
                                :(NSString*)initAddNotes
                                :(NSString*)initImageName
                                :(UIImage*)initImage;
-
-- (instancetype)initWithoutPicture:(NSString*)initName
-                                  :(NSString*)initBrand
-                                  :(NSString*)initPrice
-                                  :(NSString*)initAddNotes;
 
 - (NSString*)getName;
 - (NSString*)getBrand;

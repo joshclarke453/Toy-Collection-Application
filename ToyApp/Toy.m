@@ -10,6 +10,7 @@
 
 @implementation Toy
 
+//A simple constructor for my class which builds the Toy objects.
 - (instancetype)initWithDetails:(NSString*)initName
                                :(NSString*)initBrand
                                :(NSString*)initPrice
@@ -25,18 +26,9 @@
     return self;
 }
 
-- (instancetype)initWithoutPicture:(NSString *)initName
-                                  :(NSString*)initBrand
-                                  :(NSString*)initPrice
-                                  :(NSString*)initAddNotes {
-    self.name = initName;
-    self.brand = initBrand;
-    self.price = initPrice;
-    self.addNotes = initAddNotes;
-    self.imageName = @"yo";
-    return self;
-}
-
+//
+//A bunch of accessor methods.
+//
 -(NSString*) getName {
     return self.name;
 }

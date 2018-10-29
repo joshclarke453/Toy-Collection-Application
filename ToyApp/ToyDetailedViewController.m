@@ -22,6 +22,7 @@
 
 @implementation ToyDetailedViewController
 
+//This just takes the Toy that it recieves from a segue and displays its information.
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = [self.selectedToy getName];
@@ -30,16 +31,14 @@
     self.priceLabel.text = [@"Price: $" stringByAppendingString: [self.selectedToy getPrice]];
     self.notesField.text = [self.selectedToy getNotes];
     self.imageView.image = [self getImageFromDocuments:[self.selectedToy getImageName]];
-    NSLog(@"did it get here?");
 }
 
+//This method gets the image from my 'ToyPics' resource folder when it is given a name;
 -(UIImage*)getImageFromDocuments:(NSString*) toyName {
     NSString *path = [[NSBundle mainBundle] resourcePath];
-    NSLog(path, nil);
     NSString *toyPicsPath = @"ToyPics";
     NSString *toyPicsPath2 = [path stringByAppendingPathComponent:toyPicsPath];
     NSString *filePath = [toyPicsPath2 stringByAppendingPathComponent:toyName];
-    NSLog(filePath, nil);
     NSData *pngData = [NSData dataWithContentsOfFile:filePath];
     UIImage *image = [UIImage imageWithData:pngData];
     return image;
